@@ -82,13 +82,14 @@ export default function RegisterScreen({ navigation }) {
     />
 
     <Text style={styles.label}>Estado de emissão (UF):</Text>
-<View style={styles.input}>
+<View style={styles.pickerContainer}>
   <Picker
     selectedValue={uf}
     onValueChange={(itemValue) => setUf(itemValue)}
-    style={{ height: 50 }}
+    style={styles.picker}
   >
       <Picker.Item label="Selecione o estado" value="" />
+
       <Picker.Item label="AC" value="AC" />
       <Picker.Item label="AL" value="AL" />
       <Picker.Item label="AP" value="AP" />
@@ -225,6 +226,22 @@ pickerContainer: {
 picker: {
   height: 50,
   width: '100%',
+},
+
+pickerContainer: {
+  width: '100%',
+  paddingHorizontal: 10,
+  borderWidth: 1,
+  borderColor: '#ccc',
+  borderRadius: 8,
+  marginBottom: 15,
+  justifyContent: 'center',
+  height: 50,
+},
+
+picker: {
+  width: '100%',
+  height: '100%',
 }
 
 });
