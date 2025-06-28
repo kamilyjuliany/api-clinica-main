@@ -18,12 +18,23 @@ api-clinica-main-main/
 │   ├── middlewares/
 │   ├── routes/
 │   ├── db.js
-│   └── server.js
+│   ├── server.js
+│   ├── package.json
+│   └── package-lock.json
 │
-└── frontend/
-    ├── App.jsx
-    ├── index.js
-    └── assets/
+├── frontend/
+│   ├── assets/
+│   ├── components/
+│   ├── screens/
+│   ├── services/
+│   ├── utils/
+│   ├── App.jsx
+│   ├── index.js
+│   ├── app.json
+│   ├── package.json
+│   └── package-lock.json
+│
+├── .env
 ```
 
 ## ⚙️ Instalação
