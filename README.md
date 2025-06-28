@@ -35,6 +35,9 @@ api-clinica-main-main/
 │   └── package-lock.json
 │
 ├── .env
+├── .gitattributes
+├── .gitignore
+├── README.md
 ```
 
 ## ⚙️ Instalação
