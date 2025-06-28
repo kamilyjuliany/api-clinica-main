@@ -13,7 +13,7 @@ export default function DailyViewScreen() {
         const decoded = JSON.parse(atob(token.split('.')[1]));
         const hoje = new Date().toISOString().split('T')[0];
 
-        const response = await axios.get(`http://192.168.0.28:3000/api/consultas/${decoded.idPaciente}`, {
+        const response = await axios.get(`http://160.20.22.99:5050/api/consultas/${decoded.idPaciente}`, {
           headers: { Authorization: token }
         });
 

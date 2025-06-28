@@ -10,8 +10,7 @@ const consultaRoutes = require('./routes/consulta');
 const procedimentoRoutes = require('./routes/procedimento');
 const profissionalRoutes = require('./routes/profissional');
 const solicitacaoRoutes = require('./routes/solicitacao');
-
-
+const especialidadeRoutes = require('./routes/especialidade');
 
 app.use(cors());
 app.use(express.json());
@@ -22,10 +21,11 @@ app.use('/api/consultas', consultaRoutes);
 app.use('/api/procedimentos', procedimentoRoutes);
 app.use('/api/profissionais', profissionalRoutes);
 app.use('/api/solicitacoes', solicitacaoRoutes);
+app.use('/api/especialidades', especialidadeRoutes);
 
 
-const PORT = 3000;
-app.listen(PORT, "192.168.0.113", () => {
+const PORT = 5050;
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`Servidor rodando na porta ${PORT}`);
 });
 

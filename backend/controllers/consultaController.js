@@ -22,26 +22,10 @@ exports.listarConsultas = async (req, res) => {
   }
 };
 
-exports.criarConsulta = async (req, res) => {
-  const { idPaciente, idProfissional, idProcedimento, data } = req.body;
-
-  try {
-    await pool.query(
-      `INSERT INTO AGENDA(ID_PESSOAFIS, ID_PROFISSIO, ID_PROCED, DATAABERT)
-       VALUES (?, ?, ?, ?)`,
-      [idPaciente, idProfissional, idProcedimento, data]
-    );
-
-    res.status(201).json({ message: 'Consulta agendada com sucesso.' });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Erro ao agendar consulta.' });
-  }
-};
 // controllers/consultaController.js
 exports.criarConsulta = async (req, res) => {
   const { idPessoaFis, idProfissional, idProcedimento, data } = req.body;
-
+ console.log(req.body);
   try {
     await pool.query(
       `INSERT INTO AGENDA (ID_PESSOAFIS, ID_PROFISSIO, ID_PROCED, DATAABERT)

@@ -9,15 +9,16 @@ export default function LoginScreen({ navigation }) {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('http://192.168.0.28:3000/api/login', {
+      const response = await axios.post('http://160.20.22.99:5050/api/login', {
         cpf,
         senha,
       });
 
+      await AsyncStorage.setItem('pacienteCpf', response.data.paciente.cpf.toString());
       await AsyncStorage.setItem('token', response.data.token);
       navigation.navigate('Home');
     } catch (error) {
-      Alert.alert('Erro', 'CPF ou senha inválidos.');
+      Alert.alert('Erro', 'Sem comunicação API.');
     }
   };
 

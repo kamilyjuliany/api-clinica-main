@@ -4,7 +4,7 @@ const router = express.Router();
 const consultaController = require('../controllers/consultaController');
 const auth = require('../middlewares/auth');
 
-router.get('/:idPaciente', auth, consultaController.listarConsultas);
-router.post('/', auth, consultaController.criarConsulta);
+router.get('/:idPaciente', consultaController.listarConsultas);
+router.post('/', consultaController.criarConsulta);
 
 module.exports = router;

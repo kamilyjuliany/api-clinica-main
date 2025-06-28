@@ -34,7 +34,7 @@ export default function RegisterScreen({ navigation }) {
       const [dia, mes, ano] = dataNascimento.split('/');
       const dataISO = `${ano}-${mes}-${dia}`;
 
-      await axios.post('http://192.168.0.113:3000/api/pacientes', {
+      await axios.post('http://160.20.22.99:5050/api/pacientes', {
         nome,
         cpf,
         rg, 

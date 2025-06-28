@@ -1,29 +1,35 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, TouchableOpacity, StyleSheet, Alert, } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
+import { useIsFocused } from '@react-navigation/native';
+import { format, parseISO } from "date-fns";
 
 export default function HomeScreen({ navigation }) {
   const [consultas, setConsultas] = useState([]);
+  const isFocused = useIsFocused(); 
+
+  const fetchConsultas = async () => {
+    try {
+      const token = await AsyncStorage.getItem('token');
+      const pacienteCpf = await AsyncStorage.getItem('pacienteCpf');
+      const pacienteDados = await axios.get(`http://160.20.22.99:5050/api/pacientes/${pacienteCpf}`);
+
+      const response = await axios.get(`http://160.20.22.99:5050/api/consultas/${pacienteDados.data.id}`, {
+        headers: { Authorization: token }
+      });
+
+      setConsultas(response.data);
+    } catch (error) {
+      Alert.alert('Erro', 'Erro ao carregar consultas.');
+    }
+  };
 
   useEffect(() => {
-    const fetchConsultas = async () => {
-      try {
-        const token = await AsyncStorage.getItem('token');
-        const pacienteId = JSON.parse(atob(token.split('.')[1])).idPaciente; // decodifica JWT
-
-        const response = await axios.get(`http://192.168.0.28:3001/api/consultas/${pacienteId}`, {
-          headers: { Authorization: token }
-        });
-
-        setConsultas(response.data);
-      } catch (error) {
-        Alert.alert('Erro', 'Erro ao carregar consultas.');
-      }
-    };
-
-    fetchConsultas();
-  }, []);
+    if (isFocused) {
+      fetchConsultas();
+    }
+  }, [isFocused]);
 
   return (
     <View style={styles.container}>
@@ -35,7 +41,7 @@ export default function HomeScreen({ navigation }) {
         renderItem={({ item }) => (
           <View style={styles.card}>
             <Text style={styles.label}>Data:</Text>
-            <Text>{item.DATAABERT}</Text>
+            <Text>{format(parseISO(item.DATAABERT), "dd/MM/yyyy HH:mm")}</Text>
             <Text style={styles.label}>Profissional:</Text>
             <Text>{item.profissional}</Text>
             <Text style={styles.label}>Procedimento:</Text>

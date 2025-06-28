@@ -21,6 +21,7 @@ export default function Sidebar({ navigation }) {
 
   const handleLogout = async () => {
     await AsyncStorage.removeItem('token');
+    await AsyncStorage.removeItem('paciente');
     navigation.navigate('Login');
   };
 

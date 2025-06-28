@@ -13,7 +13,7 @@ export default function SolicitationScreen() {
         const token = await AsyncStorage.getItem('token');
         const decoded = JSON.parse(atob(token.split('.')[1]));
 
-        const response = await axios.get(`http://192.168.0.28:3000/api/consultas/${decoded.idPaciente}`, {
+        const response = await axios.get(`http://160.20.22.99:5050/api/consultas/${decoded.idPaciente}`, {
           headers: { Authorization: token }
         });
 
@@ -28,7 +28,7 @@ export default function SolicitationScreen() {
 
 const solicitarAlteracao = async (consulta) => {
   try {
-    await axios.post('http://192.168.0.28:3000/api/solicitacoes', {
+    await axios.post('http://160.20.22.99:5050/api/solicitacoes', {
       idAgenda: consulta.IDAGENDA,
       tipo: 'ALTERACAO',
     });
@@ -40,7 +40,7 @@ const solicitarAlteracao = async (consulta) => {
 
 const solicitarCancelamento = async (consulta) => {
   try {
-    await axios.post('http://localhost:3000/api/solicitacoes', {
+    await axios.post('http://160.20.22.99:5050/api/solicitacoes', {
       idAgenda: consulta.IDAGENDA,
       tipo: 'CANCELAMENTO',
     });
