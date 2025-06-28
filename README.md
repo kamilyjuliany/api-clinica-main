@@ -1,6 +1,6 @@
 # 🗓️ Fasiclin - Sistema de Agendamento de Pacientes
 
-Sistema completo de agendamento de profissionais da saúde, desenvolvido como projeto acadêmico com Node.js, React Native e MySQL.
+Sistema completo de agendamento de pacientes para consulta, desenvolvido como projeto acadêmico com Node.js, React Native e MySQL.
 
 ## 🚀 Tecnologias
 
@@ -81,8 +81,7 @@ npx expo start
 
 ✅ Login e autenticação com token  
 ✅ Cadastro e listagem de pacientes, profissionais, consultas e especialidades  
-✅ Agendamento com seleção de profissional e data  
-✅ Associação dinâmica de procedimentos  
+✅ Agendamento com seleção de profissional, especialidade, procedimentos, hora e data   
 ✅ Interface mobile com React Native  
 ✅ Separação clara entre backend e frontend  
 
